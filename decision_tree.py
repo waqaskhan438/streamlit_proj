@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, recall_score, f1_score, precision_score
 
 # Load and preprocess data
-df = pd.read_csv('D:\stremlit\ODI_Match_info.csv')
+df = pd.read_csv('ODI_Match_info.csv')
 
 # Check for missing values in 'winner' and drop them
 df = df.dropna(subset=['winner'])
