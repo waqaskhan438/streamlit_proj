@@ -4,10 +4,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, recall_score, f1_score, precision_score
 
 # Load and preprocess data
-df = pd.read_csv('ODI_Match_info.csv')
+df = pd.read_csv('D:\stremlit\ODI_Match_info.csv')
 
 # Check for missing values in 'winner' and drop them
 df = df.dropna(subset=['winner'])
@@ -47,10 +48,17 @@ max_depth = st.slider("Select Maximum Depth of Tree", min_value=1, max_value=10,
 model = DecisionTreeClassifier(criterion = 'gini', max_depth=max_depth, random_state=42)
 model.fit(X_train, y_train)
 
+
+
+
 # Evaluate model performance
 y_train_pred = model.predict(X_train)
+y_test_pred = model.predict(X_test)
 train_accuracy = accuracy_score(y_train, y_train_pred)
+test_accuracy = accuracy_score(y_test, y_test_pred)
 st.write(f"Training Accuracy: {train_accuracy:.2f}")
+st.write(f"testing Accuracy : {test_accuracy:.2f}" )
+
 
 # Display classification report
 class_names = le_winner.inverse_transform(range(len(le_winner.classes_)))  # Get the original class names
