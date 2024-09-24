@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
 # Load and preprocess data
-df = pd.read_csv(r'D:\stremlit\ODI_Match_info.csv')  # Use raw string for file path
+df = pd.read_csv(r'ODI_Match_info.csv')  # Use raw string for file path
 
 # Check for missing values in 'winner' and drop them
 df = df.dropna(subset=['winner'])
