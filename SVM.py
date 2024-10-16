@@ -1,101 +1,3 @@
-# import streamlit as st
-# import pandas as pd
-# import numpy as np
-# import seaborn as sns
-# import matplotlib.pyplot as plt
-# from sklearn.svm import SVC
-# from sklearn.model_selection import train_test_split
-# from sklearn.metrics import accuracy_score,confusion_matrix, classification_report
-# from sklearn.preprocessing import StandardScaler, LabelEncoder
-
-
-# #load Dataset 
-# df = pd.read_csv(r'ODI_Match_info.csv')
-
-# #inspect the data
-# st.title('ODI Matches Prediction')
-# st.write(df.head())
-
-# #check foe missing values 
-# st.write('check for missing values')
-# st.write(df.isnull().sum())
-
-# #drop the missing values
-# df = df.dropna(subset='winner')
-
-# # Drop the columns 'season', 'date', 'toss_winner', and 'toss_decision' from the dataframe 'df'
-# df = df.drop(columns=['season', 'date','toss_winner', 'toss_decision'],axis=1 )
-
-# # Create label encoders
-# le_teams = LabelEncoder()
-# le_venue = LabelEncoder()
-# # Concatenate team1 and team2 to get all unique team names
-# all_teams = pd.concat([df['team1'], df['team2']])
-# # Fit the LabelEncoder on all unique team names
-# le_teams.fit(all_teams)
-# # Store original team names before encoding for winner comparison
-# df['team1_original'] = df['team1']
-# df['team2_original'] = df['team2']
-# # Encode team1 and team2 using the fitted encoder
-# df['team1'] = le_teams.transform(df['team1'])
-# df['team2'] = le_teams.transform(df['team2'])
-# # Encode the winner based on the original team names
-# df['winner'] = df.apply(lambda row: row['team1'] if row['winner'] == row['team1_original'] 
-#                         else row['team2'], axis=1)
-# # # Encode venue
-# df['venue'] = le_venue.fit_transform(df['venue'])
-
-
-
-# # Drop the temporary columns (optional)
-# df.drop(columns=['team1_original', 'team2_original'], inplace=True)
-# st.write('cleaned data set')
-# st.write(df.head())
-
-
-# #select the features and target
-# X = df.drop('winner', axis=1)
-# y = df['winner']
-
-
-# #split the data into train and test
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-
-# #apply standardization , inintialize 
-# scaler = StandardScaler()
-# #fit and transform the train data
-# X_train = scaler.fit_transform(X_train)
-# X_test = scaler.transform(X_test)
-
-# #apply SVM
-# svm_model = SVC(kernel='linear', random_state=42)
-# #train the model
-# svm_model.fit(X_train, y_train)
-
-
-# #predict the test data
-# y_pred = svm_model.predict(X_test)
-# #calculate the accuracy
-# accuracy = accuracy_score(y_test, y_pred)
-# #display the accuracy
-# st.write("test Accuracy:", accuracy)
-# #display the confusion matrix
-# st.write('confusion matrix')
-# st.write(confusion_matrix(y_test, y_pred))
-
-# #display the classification report
-# st.write('classification report')
-# st.write(classification_report(y_test, y_pred))
-
-# # Create the scatter plot
-# plt.figure(figsize=(8,6))
-# sns.scatterplot(x=df['team1'], y=df['team2'])
-
-# # Display the plot in Streamlit
-# st.pyplot()
-
-
 
 import streamlit as st
 import pandas as pd
@@ -107,7 +9,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 # Load Dataset
-df = pd.read_csv(r'D:\stremlit\ODI_Match_info.csv')
+df = pd.read_csv(r'ODI_Match_info.csv')
 
 # Inspect the data
 st.title('ODI Matches Prediction')
