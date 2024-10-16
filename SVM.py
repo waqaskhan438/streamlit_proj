@@ -10,7 +10,7 @@
 
 
 # #load Dataset 
-# df = pd.read_csv(r'D:\stremlit\ODI_Match_info.csv')
+# df = pd.read_csv(r'ODI_Match_info.csv')
 
 # #inspect the data
 # st.title('ODI Matches Prediction')
